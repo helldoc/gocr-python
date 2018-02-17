@@ -1,9 +1,9 @@
 import gocr_py
 import io
 
-res = gocr_py.process_path("/home/user/work/test/test2.pnm")
-print (res)
-array = bytearray(b'Hello bro HEH')
+file = open("/home/user/work/test/test2.pnm", "rb")
+readed = file.read()
+array = bytearray(readed)
 res = gocr_py.process_image(array)
 print (res)
 

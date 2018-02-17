@@ -457,17 +457,13 @@ char **process_path(const char *path) {
 
 char **process_image(unsigned char *bytes, size_t length)
 {
-	fprintf(stdout,"Size = %i\n",length);
-	for(int i = 0; i < length; i++) {
-	  fprintf(stdout, "%c", (char) bytes[i]);
-	}
-	char **ret = malloc( 3 * sizeof(char *));
-	ret[0] = malloc(sizeof("BEGIN"));
-	strcpy(ret[0],"BEGIN");
-	ret[1] = malloc(sizeof("END")); 
-        strcpy(ret[1],"END");
-	ret[2] = NULL;
-	fprintf(stdout, "%s", ret[0]);
-	fprintf(stdout, "%s", ret[1]);
+	char *tmp_name = tmpnam(NULL);
+	FILE * tmp_file = fopen(tmp_name, "wb");
+	fwrite(bytes,sizeof(unsigned char), length, tmp_file);
+	fclose(tmp_file);
+
+	char **ret = process_path(tmp_name);
+	remove(tmp_name);
+
 	return ret;
 }
