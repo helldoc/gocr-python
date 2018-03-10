@@ -1,3 +1,0 @@
-#!/bin/bash
-swig -Wall -python -py3 $1.i
-gcc -g -O2 -fpic -DHAVE_CONFIG_H -I/usr/include/python3.5 -I../include -c $1_wrap.c $1.c

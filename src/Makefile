@@ -52,7 +52,7 @@ RANLIB = ranlib
 AR = ar
 INSTALL=/usr/bin/install -c
 # shell is needed for OS/2 to let if test -r $(PROGRAM) ... work
-SHELL=/bin/bash
+SHELL=/bin/sh
 
 DEFS=-DHAVE_CONFIG_H
 CPPFLAGS=

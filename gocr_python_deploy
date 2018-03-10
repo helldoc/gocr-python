@@ -1,0 +1,13 @@
+#!/bin/bash
+cd src
+/usr/local/swig/3.0.12/bin/swig -Wall -python -py3 -outdir ../bin gocr.i
+
+gcc -g -O2 -fpic -DHAVE_CONFIG_H -I/usr/include/python3.6m -I../include -c gocr_wrap.c gocr.c
+
+for i in box database detect barcode lines list ocr0 ocr0n ocr1 otsu output pixel unicode remove pnm pgm2asc pcx progress job
+do
+gcc -g -O2 -I../include -DHAVE_CONFIG_H -fPIC -c -o $i.o $i.c
+done
+
+gcc -lm -shared -o ../bin/_gocr_py.so pgm2asc.o box.o database.o detect.o barcode.o lines.o list.o ocr0.o ocr0n.o ocr1.o otsu.o output.o pixel.o unicode.o remove.o pnm.o pcx.o progress.o job.o gocr.o gocr_wrap.o
+cd ..

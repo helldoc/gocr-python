@@ -14,8 +14,8 @@ prefix = /usr/local
 #bindir = $(prefix)/bin
 bindir = /usr/local${exec_prefix}/bin
 
-SHELL = /bin/bash
-# this does not work on SuSE 6.0, why? (autoconf 2.12 do not set /bin/bash ?)
+SHELL = /bin/sh
+# this does not work on SuSE 6.0, why? (autoconf 2.12 do not set /bin/sh ?)
 #SHELL = bash #
 INSTALL = /usr/bin/install -c
 CC = gcc

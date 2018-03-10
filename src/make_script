@@ -1,5 +1,0 @@
-#!/bin/bash
-for i in box database detect barcode lines list ocr0 ocr0n ocr1 otsu output pixel unicode remove pnm pcx progress job
-do
-gcc -g -O2  -I../include -DHAVE_CONFIG_H -fPIC -c -o $i.o $i.c
-done

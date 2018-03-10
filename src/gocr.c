@@ -389,7 +389,8 @@ static char **get_recognized_characters(job_t *job) {
   assert(job);
   int linecount = job->res.linelist.n;
   char **string_array = malloc( (linecount + 1) * sizeof(char *)); // Cause of convention, must terminate all array with NULL pointer
-  for(int i = 0; i < linecount; ++i) {
+  int i = 0;  
+  for(i = 0; i < linecount; ++i) {
     line = getTextLine(&(job->res.linelist), i);
     if(!line) {
       fputs("Bad malloc in get_recognized_characters",stdout);
